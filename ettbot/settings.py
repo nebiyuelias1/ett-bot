@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'django_tgbot',
+    'ethio_tour_and_travel_bot',
 ]
 
 MIDDLEWARE = [
