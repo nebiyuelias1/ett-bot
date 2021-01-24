@@ -45,8 +45,8 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('memory', models.TextField(blank=True, null=True, verbose_name='Memory in JSON format')),
                 ('name', models.CharField(blank=True, max_length=256, null=True)),
-                ('telegram_chat', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='telegram_states', to='ethio_tour_and_travel_bot.telegramchat')),
-                ('telegram_user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='telegram_states', to='ethio_tour_and_travel_bot.telegramuser')),
+                ('telegram_chat', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='telegram_states', to='guide_addis_bot.telegramchat')),
+                ('telegram_user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='telegram_states', to='guide_addis_bot.telegramuser')),
             ],
             options={
                 'unique_together': {('telegram_user', 'telegram_chat')},
@@ -55,11 +55,13 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='telegramstate',
             name='telegram_chat',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='telegram_states', to='ethio_tour_and_travel_bot.telegramchat'),
+            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE,
+                                    related_name='telegram_states', to='guide_addis_bot.telegramchat'),
         ),
         migrations.AlterField(
             model_name='telegramstate',
             name='telegram_user',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='telegram_states', to='ethio_tour_and_travel_bot.telegramuser'),
+            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE,
+                                    related_name='telegram_states', to='guide_addis_bot.telegramuser'),
         ),
     ]

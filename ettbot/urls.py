@@ -15,9 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from ethio_tour_and_travel_bot import urls as ethio_tour_and_travel_bot_urls
+from guide_addis_bot import urls as guide_addis_bot_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('ethio_tour_and_travel_bot/', include(ethio_tour_and_travel_bot_urls))
+    path('guide_addis_bot/', include(guide_addis_bot_urls))
 ]

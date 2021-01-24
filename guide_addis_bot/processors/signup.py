@@ -2,8 +2,8 @@ from django_tgbot.decorators import processor
 from django_tgbot.state_manager import message_types, update_types, state_types
 from django_tgbot.types.update import Update
 from django_tgbot.exceptions import ProcessFailure
-from ..bot import state_manager, TelegramBot
-from ..models import TelegramState
+from guide_addis_bot.bot import state_manager, TelegramBot
+from guide_addis_bot.models import TelegramState
 
 state_manager.set_default_update_types(update_types.Message)
 

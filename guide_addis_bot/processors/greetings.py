@@ -4,8 +4,9 @@ from django_tgbot.types.update import Update
 from django_tgbot.types.replykeyboardmarkup import ReplyKeyboardMarkup
 from django_tgbot.types.keyboardbutton import KeyboardButton
 from django_tgbot.types.replykeyboardremove import ReplyKeyboardRemove
-from ..bot import state_manager, TelegramBot
-from ..models import TelegramState
+
+from guide_addis_bot.bot import state_manager, TelegramBot
+from guide_addis_bot.models import TelegramState
 
 state_manager.set_default_update_types(update_types.Message)
 
@@ -14,7 +15,7 @@ state_manager.set_default_update_types(update_types.Message)
 def say_hello(bot: TelegramBot, update: Update, state: TelegramState):
     chat_id = update.get_chat().get_id()
     bot.sendMessage(chat_id, 'Hello! and welcome to this bot :)')
-    bot.sendPhoto(chat_id, open('ethio_tour_and_travel_bot/img/logo.png', 'rb'), upload=True)
+    bot.sendPhoto(chat_id, open('guide_addis_bot/img/logo.png', 'rb'), upload=True)
     bot.sendMessage(chat_id, 'Have you signed up yet?', reply_markup=ReplyKeyboardMarkup.a(keyboard=[
         [KeyboardButton.a(text='Yes!'), KeyboardButton.a(text='Do it now!')]
     ]))
