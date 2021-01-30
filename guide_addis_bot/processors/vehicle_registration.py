@@ -42,15 +42,16 @@ def get_name(bot: TelegramBot, update: Update, state: TelegramState):
 
 @processor(state_manager, from_states='asked_for_model', success=state_types.Reset, fail=state_types.Keep,
            message_types=message_types.Text)
-def get_email(bot, update, state):
+def get_email(bot: TelegramBot, update: Update, state):
     chat_id = update.get_chat().get_id()
     model = update.get_message().get_text()
 
     make = state.get_memory()['make']
 
-    create_vehicle(make=make, model=model, number_of_seats=4)
+    update.get_user()
+    create_vehicle(make=make, model=model, number_of_seats=4, telegram_user=bot.get_db_user(update.get_user().id))
     bot.sendMessage(chat_id,
-                    'Thanks! You successfully registered your vehicle with detail:\nName: {}\nEmail: {}'.format(make,
+                    'Thanks! You successfully registered your vehicle with detail:\nMake: {}\nModel: {}'.format(make,
                                                                                                                 model))
 
     state.set_memory({})
