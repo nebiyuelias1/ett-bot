@@ -1,1 +1,1 @@
-from . import greetings, signup
+from . import greetings, signup, vehicle_registration
