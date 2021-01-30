@@ -11,17 +11,17 @@ from guide_addis_bot.models import TelegramState
 state_manager.set_default_update_types(update_types.Message)
 
 
-@processor(state_manager, success='asked_for_signup')
+@processor(state_manager, success='asked_for_choice')
 def say_hello(bot: TelegramBot, update: Update, state: TelegramState):
     chat_id = update.get_chat().get_id()
-    bot.sendMessage(chat_id, 'Hello! and welcome to this bot :)')
+    bot.sendMessage(chat_id, 'Hello! and welcome to Guide Addis bot :)')
     bot.sendPhoto(chat_id, open('guide_addis_bot/img/logo.png', 'rb'), upload=True)
-    bot.sendMessage(chat_id, 'Have you signed up yet?', reply_markup=ReplyKeyboardMarkup.a(keyboard=[
-        [KeyboardButton.a(text='Yes!'), KeyboardButton.a(text='Do it now!')]
+    bot.sendMessage(chat_id, 'What do you want to do?', reply_markup=ReplyKeyboardMarkup.a(keyboard=[
+        [KeyboardButton.a(text='Register your vehicle'), KeyboardButton.a(text='Browse car listings')]
     ]))
 
 
-@processor(state_manager, from_states='asked_for_signup', success=state_types.Keep,
+@processor(state_manager, from_states='asked_for_choice', success=state_types.Keep,
            exclude_message_types=message_types.Text)
 def text_only(bot, update, state):
     bot.sendMessage(update.get_chat().get_id(), 'I\'d appreciate it if you answer in text format 😅')
